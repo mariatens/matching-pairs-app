@@ -1,0 +1,1 @@
+yarn create vite my-vue-app --template react-ts
