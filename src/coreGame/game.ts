@@ -9,7 +9,7 @@ function cardify(emoji: string, index: number): Card {
     return {
         id: index + 1,
         emoji: emoji,
-        life: Math.random() > 0.5 ? "faceDown" : "faceUp"
+        life: "faceDown"
     }
 }
 
