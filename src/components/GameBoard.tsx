@@ -33,7 +33,7 @@ export default function GameBoard(): JSX.Element {
         }
         else{
             if(turnState.firstCard.emoji === turnState.secondCard.emoji){
-                removeTwoCards(turnState.firstCard, turnState.secondCard)
+                removeTwoCards(turnState.firstCard, turnState.secondCard, allCards, setAllCards)
                 console.log("You found the matching pairs!")
                 
             }
@@ -77,7 +77,14 @@ function turnTwoCardsDown(firstCard: Card, secondCard: Card, allCards: Card[], s
 }
 
 
-function removeTwoCards(firstCard: Card, secondCard: Card) {
-    // throw new Error("Function not implemented.");
+function removeTwoCards(firstCard: Card, secondCard: Card, allCards: Card[], setAllCards: any) {
+    const newCards = allCards.map(card => {
+        if (card.id === firstCard.id || card.id === secondCard.id) {
+            return { ...card, life: "removed" };
+        } else {
+            return card;
+        }
+    });
+    setAllCards(newCards);
 }
 
