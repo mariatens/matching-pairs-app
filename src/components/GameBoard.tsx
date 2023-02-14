@@ -38,7 +38,7 @@ export default function GameBoard(): JSX.Element {
                 
             }
             else{
-                turnTwoCardsDown(turnState.firstCard, turnState.secondCard) 
+                turnTwoCardsDown(turnState.firstCard, turnState.secondCard, allCards, setAllCards) 
 
             }
             setTurnState({title : "none-turned"})
@@ -65,9 +65,17 @@ export default function GameBoard(): JSX.Element {
     )
 }
 
-function turnTwoCardsDown(firstCard: Card, secondCard: Card) {
-//     throw new Error("Function not implemented.");
+function turnTwoCardsDown(firstCard: Card, secondCard: Card, allCards: Card[], setAllCards: any) {
+    const newCards = allCards.map(card => {
+        if (card.id === firstCard.id || card.id === secondCard.id) {
+            return { ...card, life: "faceDown" };
+        } else {
+            return card;
+        }
+    });
+    setAllCards(newCards);
 }
+
 
 function removeTwoCards(firstCard: Card, secondCard: Card) {
     // throw new Error("Function not implemented.");
